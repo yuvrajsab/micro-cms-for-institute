@@ -11,7 +11,7 @@ class ShowPostTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function users_can_see_all_posts()
+    public function user_can_see_all_posts()
     {
         $this->withoutExceptionHandling();
 
@@ -23,7 +23,7 @@ class ShowPostTest extends TestCase
     }
 
     /** @test */
-    public function users_can_see_recent_posts()
+    public function user_can_see_recent_posts()
     {
         $this->withoutExceptionHandling();
 

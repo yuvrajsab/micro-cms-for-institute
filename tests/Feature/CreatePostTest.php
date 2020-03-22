@@ -11,7 +11,7 @@ class CreatePostTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function auth_users_can_create_post()
+    public function authorized_user_can_create_post()
     {
         $this->withoutExceptionHandling();
 

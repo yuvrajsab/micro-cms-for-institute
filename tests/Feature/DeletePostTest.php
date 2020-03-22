@@ -20,7 +20,7 @@ class DeletePostTest extends TestCase
     }
 
     /** @test */
-    public function auth_user_can_delete_post()
+    public function authorized_user_can_delete_post()
     {
         $this->withoutExceptionHandling();
 

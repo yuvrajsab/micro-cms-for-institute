@@ -11,7 +11,7 @@ class EditPostTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function auth_user_can_edit_post()
+    public function authorized_user_can_edit_post()
     {
         $this->withoutExceptionHandling();
 
