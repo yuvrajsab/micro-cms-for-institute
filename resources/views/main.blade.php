@@ -33,9 +33,14 @@
     </div>
     <div class="col bg-white mx-2 p-3">
         <div class="card rounded-0">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item" v-for="i in 10">Cras justo odio</li>
-            </ul>
+            @foreach ($posts as $post)
+            <div>
+                <h6 class="font-weight-bold">{{ $post->title }}</h6>
+            </div>
+            @endforeach
+            <p class="mb-0 text-right">
+                <a href="{{ route('posts') }}">View all</a>
+            </p>
         </div>
     </div>
 </div>

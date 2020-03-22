@@ -11054,3 +11054,8 @@ a.text-purple:focus {
   }
 }
 
+.btn-default {
+  border: 1px solid #dee2e6;
+  background-color: #fff;
+}
+
