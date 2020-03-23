@@ -3,26 +3,29 @@
 @section('content')
 
 @auth
-<a href="{{ route('posts.create') }}" class="btn btn-secondary">New Post</a>
+    @linkButton(['to' => route('posts.create'), 'color' => 'secondary'])
+        New Post
+    @endlinkButton
 @endauth
 
 @foreach ($posts as $post)
-<div class="card" id="{{ $post->id }}">
-    <div class="card-header">
-        {{ $post->title }}
-        @auth
-        <a href="{{ route('posts.edit', $post) }}" class="btn btn-sm btn-secondary" role="button">Edit</a>
-        <form action="{{ route('posts.delete', $post) }}" class="d-inline" method="POST">
-            @csrf @method('DELETE')
+    @card(['id' => $post->id])
+        @slot('header')
+            {{ $post->title }}
+            @auth
+                @linkButton(['to' => route('posts.edit', $post), 'color' => 'secondary', 'classes' => 'btn-sm'])
+                    Edit
+                @endlinkButton
+                @form(['action' => route('posts.delete', $post), 'classes' => 'd-inline', 'method' => 'DELETE'])
+                    @button(['type' => 'submit', 'color' => 'danger', 'classes' => 'btn-sm'])
+                        Delete
+                    @endbutton
+                @endform
+            @endauth
+        @endslot
 
-            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-        </form>
-        @endauth
-    </div>
-    <div class="card-body">
         <p class="card-text">{{ $post->body }}</p>
-    </div>
-</div>
+    @endcard
 @endforeach
 
 @endsection
