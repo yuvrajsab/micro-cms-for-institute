@@ -25,10 +25,7 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        Post::create([
-            'title' => $request->title,
-            'body' => $request->body,
-        ]);
+        Post::create($this->getValidatedAttributes($request));
 
         return redirect()->route('posts');
     }
@@ -40,10 +37,7 @@ class PostController extends Controller
 
     public function update(Post $post, Request $request)
     {
-        $post->update([
-            'title' => $request->title,
-            'body' => $request->body,
-        ]);
+        $post->update($this->getValidatedAttributes($request));
 
         return redirect()->route('posts');
     }
@@ -53,5 +47,13 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->route('posts');
+    }
+
+    protected function getValidatedAttributes(Request $request): array
+    {
+        return $request->validate([
+            'title' => 'required|min:3',
+            'body' => 'required',
+        ]);
     }
 }

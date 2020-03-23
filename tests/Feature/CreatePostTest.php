@@ -30,4 +30,30 @@ class CreatePostTest extends TestCase
         $this->post(route('posts'), [])
             ->assertRedirect(route('login'));
     }
+
+    /** @test */
+    public function a_post_requires_a_title_of_minimum_3_character()
+    {
+        $this->publishPost(['title' => null])
+            ->assertSessionHasErrors('title');
+
+        $this->publishPost(['title' => 'ab'])
+            ->assertSessionHasErrors('title');
+    }
+
+    /** @test */
+    public function a_post_requires_a_body()
+    {
+        $this->publishPost(['body' => null])
+            ->assertSessionHasErrors('body');
+    }
+
+    protected function publishPost(array $overrides)
+    {
+        $this->signIn();
+
+        $post = factory(Post::class)->make($overrides);
+
+        return $this->post(route('posts'), $post->toArray());
+    }
 }
