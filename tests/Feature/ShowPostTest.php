@@ -11,7 +11,7 @@ class ShowPostTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function user_can_see_all_posts()
+    public function user_can_see_posts()
     {
         $this->withoutExceptionHandling();
 
@@ -20,14 +20,6 @@ class ShowPostTest extends TestCase
         $this->get(route('posts'))
             ->assertSee($post->title)
             ->assertSee($post->body);
-    }
-
-    /** @test */
-    public function user_can_see_recent_posts()
-    {
-        $this->withoutExceptionHandling();
-
-        $post = factory(Post::class)->create();
 
         $this->get('/')
             ->assertSee($post->title);
