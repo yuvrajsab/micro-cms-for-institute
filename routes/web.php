@@ -29,3 +29,5 @@ Route::post('/posts', 'PostController@store')->name('posts');
 Route::get('/posts/{post}/edit', 'PostController@edit')->name('posts.edit');
 Route::patch('/posts/{post}/update', 'PostController@update')->name('posts.update');
 Route::delete('/posts/{post}', 'PostController@destroy')->name('posts.delete');
+
+Route::view('/test', 'welcome');

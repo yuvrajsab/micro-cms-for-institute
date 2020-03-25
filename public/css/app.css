@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@charset "UTF-8";
 
 /*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
@@ -2205,7 +2205,7 @@ pre code {
   background-color: #fff;
   border-color: #ce00ce;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(78, 0, 78, 0.25);
+  box-shadow: none;
 }
 
 .form-control::-webkit-input-placeholder {
@@ -4013,7 +4013,7 @@ input[type=button].btn-block {
 }
 
 .custom-control-input:focus ~ .custom-control-label::before {
-  box-shadow: 0 0 0 0.2rem rgba(78, 0, 78, 0.25);
+  box-shadow: none;
 }
 
 .custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
@@ -4220,7 +4220,7 @@ input[type=button].btn-block {
 
 .custom-file-input:focus ~ .custom-file-label {
   border-color: #ce00ce;
-  box-shadow: 0 0 0 0.2rem rgba(78, 0, 78, 0.25);
+  box-shadow: none;
 }
 
 .custom-file-input[disabled] ~ .custom-file-label,
@@ -4282,15 +4282,15 @@ input[type=button].btn-block {
 }
 
 .custom-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #f8fafc, 0 0 0 0.2rem rgba(78, 0, 78, 0.25);
+  box-shadow: 0 0 0 1px #f8fafc, none;
 }
 
 .custom-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #f8fafc, 0 0 0 0.2rem rgba(78, 0, 78, 0.25);
+  box-shadow: 0 0 0 1px #f8fafc, none;
 }
 
 .custom-range:focus::-ms-thumb {
-  box-shadow: 0 0 0 1px #f8fafc, 0 0 0 0.2rem rgba(78, 0, 78, 0.25);
+  box-shadow: 0 0 0 1px #f8fafc, none;
 }
 
 .custom-range::-moz-focus-outer {
