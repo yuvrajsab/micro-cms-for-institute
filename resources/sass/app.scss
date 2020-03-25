@@ -7,7 +7,5 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-.btn-default {
-	border: 1px solid $border-color;
-	background-color: $white;
-}
+// App styles
+@import 'style';

@@ -19,9 +19,11 @@ $teal: #4dc0b5;
 $cyan: #6cb2eb;
 $magenta: #4e004e;
 
-$dropdown-border-radius: 0;
+$primary: $magenta;
 
 $theme-colors: (
-	'primary': $magenta,
-	'purple': $purple,
+	'primary': $primary,
+	'primary-dark': darken($primary, 3%),
 );
+
+$enable-rounded: false;
