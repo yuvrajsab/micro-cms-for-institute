@@ -54,9 +54,13 @@
             <td>
                 <div class="d-flex justify-content-end">
                     @if (!$post->published_at)
-                    <a href="#" class="btn btn-sm btn-default" role="button">
-                        Publish
-                    </a>
+                    <form action="{{ route('admin.posts.publish', $post) }}" method="post">
+                        @csrf
+
+                        <button type="submit" class="btn btn-sm btn-default h-100">
+                            Publish
+                        </button>
+                    </form>
                     @endif
                     <a href="{{ route('admin.posts.edit', $post) }}" class="btn btn-sm btn-default" role="button">
                         @include('svg.edit', ['classes' => 'text-warning'])
