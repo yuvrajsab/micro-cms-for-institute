@@ -31,22 +31,33 @@
             <td>
                 <strong>
                     <a href="{{ route('admin.posts.show', $post) }}" target="_blank">{{ $post->title }}</a>
+                    @if (!$post->published_at)
                     <span class="text-muted">--Draft</span>
+                    @endif
                 </strong>
             </td>
-            <td>yuvraj</td>
-            <td>Uncategorized</td>
+            <td>{{ $post->author->name }}</td>
+            <td>{{ $post->category->name }}</td>
             <td>
-                Published <br>
-                <abbr title="{{ $post->created_at->toDateTimeString() }}" class="initialism">
-                    {{ $post->created_at->toDateString() }}
+                @if (!$post->published_at)
+                Last modified
+                <abbr title="{{ $post->updated_at->toDateTimeString() }}" class="initialism">
+                    {{ $post->updated_at->toDateString() }}
                 </abbr>
+                @else
+                Published <br>
+                <abbr title="{{ $post->published_at->toDateTimeString() }}" class="initialism">
+                    {{ $post->published_at->toDateString() }}
+                </abbr>
+                @endif
             </td>
             <td>
                 <div class="d-flex justify-content-end">
+                    @if (!$post->published_at)
                     <a href="#" class="btn btn-sm btn-default" role="button">
                         Publish
                     </a>
+                    @endif
                     <a href="{{ route('admin.posts.edit', $post) }}" class="btn btn-sm btn-default" role="button">
                         @include('svg.edit', ['classes' => 'text-warning'])
                     </a>

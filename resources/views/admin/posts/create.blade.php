@@ -15,13 +15,10 @@
 
 <div class="form-group">
     <label for="exampleFormControlSelect1">Category</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-        <option></option>
-        <option>Draft</option>
-        <option>Admission</option>
-        <option>Pay</option>
-        <option>Event</option>
-        <option>Status</option>
+    <select name="category_id" class="form-control" id="exampleFormControlSelect1">
+        @foreach ($categories as $category)
+        <option value="{{ $category->id }}">{{ $category->name }}</option>
+        @endforeach
     </select>
 </div>
 

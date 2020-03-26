@@ -2,21 +2,24 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
     public function index()
     {
         return view('admin.posts.index')
-            ->withPosts(Post::latest()->get());
+            ->withPosts(Post::with('author')->latest()->get());
     }
 
     public function create()
     {
-        return view('admin.posts.create');
+        return view('admin.posts.create')
+            ->withCategories(Category::all());
     }
 
     /**
@@ -27,6 +30,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        Post::create([
+            'title' => $request->title,
+            'slug' => $request->slug,
+            'category_id' => $request->category_id,
+            'body' => $request->body,
+            'author_id' => Auth::id(),
+        ]);
+
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -68,5 +80,12 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
+    }
+
+    public function publish(Post $post)
+    {
+        $post->publish();
+
+        return redirect()->route('admin.posts.index');
     }
 }
