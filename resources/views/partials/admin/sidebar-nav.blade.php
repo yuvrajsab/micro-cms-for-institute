@@ -10,6 +10,9 @@
             <li class="nav-item {{ Route::is('admin.posts.*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.posts.index') }}">Posts</a>
             </li>
+            <li class="nav-item {{ Route::is('admin.categories.*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.categories.index') }}">Categories</a>
+            </li>
             <li class="nav-item dropdown dropright">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
