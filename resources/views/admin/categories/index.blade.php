@@ -29,6 +29,7 @@
             <th scope="row">{{ $category->id }}</th>
             <td>
                 <strong><a href="#">{{ $category->name }}</a></strong>
+                <p v-show="false" class="text-justify">{{ $category->description }}</p>
             </td>
             <td>{{ $category->creator->name }}</td>
             <td>

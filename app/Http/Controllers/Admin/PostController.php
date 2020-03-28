@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -30,9 +31,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|min:3',
+            'body' => 'required',
+        ]);
+
         Post::create([
             'title' => $request->title,
-            'slug' => $request->slug,
+            'slug' => $this->generateUniqueSlug($request->title),
             'category_id' => $request->category_id,
             'body' => $request->body,
             'author_id' => Auth::id(),
@@ -87,5 +93,17 @@ class PostController extends Controller
         $post->publish();
 
         return redirect()->route('admin.posts.index');
+    }
+
+    /**
+     * Generate a unique slug for the given text
+     * Ex: 2020-04-01-my-first-post
+     *
+     * @param String $text
+     * @return String
+     */
+    protected function generateUniqueSlug(String $text): String
+    {
+        return now()->toDateString().'-'.Str::slug($text);
     }
 }

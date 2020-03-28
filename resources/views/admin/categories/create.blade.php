@@ -10,9 +10,6 @@
 @inputGroup(['title' => 'Name', 'name' => 'name'])
 @endinputGroup
 
-@inputGroup(['title' => 'Slug', 'name' => 'slug'])
-@endinputGroup
-
 @textareaGroup(['title' => 'Description', 'name' => 'description'])
 @endtextareaGroup
 

@@ -5,8 +5,10 @@
  */
 
 require('./bootstrap');
+import CKEditor from '@ckeditor/ckeditor5-vue';
 
 window.Vue = require('vue');
+window.Vue.use(CKEditor);
 
 /**
  * The following block of code may be used to automatically register your
@@ -20,8 +22,8 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component(
-	'post-component',
-	require('./components/PostComponent.vue').default,
+	'editor-component',
+	require('./components/EditorComponent.vue').default,
 );
 
 /**

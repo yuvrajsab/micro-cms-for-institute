@@ -2,41 +2,42 @@
 
 @section('content')
 
-<post-component inline-template>
-    <div>
-        <h1 class="display-4">New Post</h1>
+<h1 class="display-4">New Post</h1>
 
-        <hr>
+<hr>
 
-        @form(['action' => route('admin.posts.store'), 'method' => 'POST'])
-        @inputGroup(['title' => 'Title', 'name' => 'title', 'attributes' => 'v-model="title" autocomplete="off"'])
-        @endinputGroup
+@form(['action' => route('admin.posts.store'), 'method' => 'POST'])
+@inputGroup(['title' => 'Title', 'name' => 'title', 'attributes' => 'autocomplete="off"'])
+@endinputGroup
 
-        @inputGroup(['title' => 'Slug', 'name' => 'slug', 'attributes' => ':value="generatedSlug"'])
-        @endinputGroup
+<div class="form-group">
+    <label for="exampleFormControlSelect1">Category</label>
+    <select name="category_id" class="form-control" id="exampleFormControlSelect1">
+        @foreach ($categories as $category)
+        <option value="{{ $category->id }}">{{ $category->name }}</option>
+        @endforeach
+    </select>
+</div>
 
-        <div class="form-group">
-            <label for="exampleFormControlSelect1">Category</label>
-            <select name="category_id" class="form-control" id="exampleFormControlSelect1">
-                @foreach ($categories as $category)
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                @endforeach
-            </select>
-        </div>
 
-        @textareaGroup(['title' => 'Body', 'name' => 'body'])
-        @endtextareaGroup
+<div class="form-group">
+    <label for="body">Body</label>
 
-        <div class="mt-4">
-            @button(['type' => 'submit'])
-            Save Draft
-            @endbutton
+    <editor-component id="body" name="body" classes="form-control" old-value="{{ old('body') }}"></editor-component>
 
-            @linkButton(['to' => route('admin.posts.index')])
-            Cancel
-            @endlinkButton
-        </div>
-        @endform
-    </div>
-</post-component>
+    @error('body')
+    <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
+
+<div class="mt-4">
+    @button(['type' => 'submit'])
+    Save Draft
+    @endbutton
+
+    @linkButton(['to' => route('admin.posts.index')])
+    Cancel
+    @endlinkButton
+</div>
+@endform
 @endsection
