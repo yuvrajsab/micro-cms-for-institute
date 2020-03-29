@@ -10,15 +10,11 @@
 @inputGroup(['title' => 'Title', 'name' => 'title', 'attributes' => 'autocomplete="off"'])
 @endinputGroup
 
-<div class="form-group">
-    <label for="exampleFormControlSelect1">Category</label>
-    <select name="category_id" class="form-control" id="exampleFormControlSelect1">
-        @foreach ($categories as $category)
-        <option value="{{ $category->id }}">{{ $category->name }}</option>
-        @endforeach
-    </select>
-</div>
-
+@selectGroup(['title' => 'Category', 'name' => 'category_id'])
+@foreach ($categories as $category)
+<option value="{{ $category->id }}">{{ $category->name }}</option>
+@endforeach
+@endselectGroup
 
 <div class="form-group">
     <label for="body">Body</label>
