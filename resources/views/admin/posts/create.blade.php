@@ -23,14 +23,14 @@
 <div class="form-group">
     <label for="body">Body</label>
 
-    <editor-component id="body" name="body" classes="form-control" old-value="{{ old('body') }}"></editor-component>
+    <editor-component id="body" name="body" old-value="{{ old('body') }}"></editor-component>
 
     @error('body')
     <div class="invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
 
-<div class="mt-4">
+<div class="my-4">
     @button(['type' => 'submit'])
     Save Draft
     @endbutton

@@ -5,9 +5,18 @@
  */
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'DashboardController@index')->name('dashboard');
+/**
+ * File manager routes
+ */
+Route::group(['middleware' => 'auth', 'prefix' => 'filemanager'], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
 
-Route::resource('posts', 'PostController');
-Route::post('/posts/{post}/publish', 'PostController@publish')->name('posts.publish');
+Route::as('admin.')->group(function () {
+    Route::get('/', 'DashboardController@index')->name('dashboard');
 
-Route::resource('categories', 'CategoryController');
+    Route::resource('posts', 'PostController');
+    Route::post('/posts/{post}/publish', 'PostController@publish')->name('posts.publish');
+
+    Route::resource('categories', 'CategoryController');
+});
