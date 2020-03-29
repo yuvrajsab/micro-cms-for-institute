@@ -5,11 +5,14 @@ use App\Category;
 use App\Post;
 use App\User;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
 $factory->define(Post::class, function (Faker $faker) {
+    $title = $faker->sentence();
+
     return [
-        'title' => $faker->sentence(),
-        'slug' => $faker->slug(),
+        'title' => $title,
+        'slug' => now()->toDateString().'-'.Str::slug($title),
         'author_id' => function () {
             return factory(User::class)->create()->id;
         },

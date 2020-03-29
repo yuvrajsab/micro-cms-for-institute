@@ -11,17 +11,14 @@ class ShowPostTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function user_can_see_posts()
+    public function authorized_user_can_see_unpublished_posts()
     {
         $this->withoutExceptionHandling();
 
-        $post = factory(Post::class)->create();
+        $post = factory(Post::class)->create(['published_at' => null]);
 
-        $this->get(route('posts'))
+        $this->get(route('admin.posts.show', $post))
             ->assertSee($post->title)
             ->assertSee($post->body);
-
-        $this->get('/')
-            ->assertSee($post->title);
     }
 }

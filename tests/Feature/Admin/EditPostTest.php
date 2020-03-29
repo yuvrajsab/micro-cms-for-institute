@@ -20,7 +20,7 @@ class EditPostTest extends TestCase
         $post = factory(Post::class)->create();
         $post->title = 'changed title';
 
-        $this->patch(route('posts.update', $post), $post->toArray())
+        $this->patch(route('admin.posts.update', $post), $post->toArray())
             ->assertRedirect(route('posts'));
 
         $this->assertDatabaseHas('posts', $post->fresh()->toArray());
@@ -32,7 +32,7 @@ class EditPostTest extends TestCase
         $post = factory(Post::class)->create();
         $post->title = 'changed title';
 
-        $this->patch(route('posts.update', $post), $post->toArray())
+        $this->patch(route('admin.posts.update', $post), $post->toArray())
             ->assertRedirect(route('login'));
     }
 }

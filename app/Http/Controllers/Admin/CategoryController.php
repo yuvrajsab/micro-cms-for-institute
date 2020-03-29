@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class CategoryController extends Controller
@@ -26,6 +27,7 @@ class CategoryController extends Controller
             'name' => $request->name,
             'slug' => Str::slug($request->name),
             'description' => $request->description,
+            'created_by' => Auth::id(),
         ]);
 
         return redirect()->route('admin.categories.index');

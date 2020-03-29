@@ -3,6 +3,7 @@
 namespace Tests\Feature\Admin;
 
 use App\Category;
+use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -15,9 +16,13 @@ class CreateCategoryTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $category = factory(Category::class)->make();
+        $user = factory(User::class)->create();
 
-        $this->signIn();
+        $this->signIn($user);
+
+        $category = factory(Category::class)->make([
+            'created_by' => $user,
+        ]);
 
         $this->post(route('admin.categories.store'), $category->toArray())
             ->assertRedirect(route('admin.categories.index'));

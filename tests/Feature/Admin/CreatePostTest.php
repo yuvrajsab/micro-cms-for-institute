@@ -15,6 +15,8 @@ class CreatePostTest extends TestCase
     /** @test */
     public function authorized_user_can_create_post()
     {
+        $this->withoutExceptionHandling();
+
         $user = factory(User::class)->create();
 
         $this->signIn($user);

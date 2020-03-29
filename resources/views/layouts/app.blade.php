@@ -13,30 +13,37 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    @stack('styles')
 </head>
 
-<body>
+<body class="bg-light">
     <div id="app">
 
-        @include('layouts.partials.header')
+        @include('partials.guest.header')
 
-        @include('layouts.partials.nav')
+        <main class="container my-3">
+            <div class="row">
+                <div class="col-md-4 col-lg-3">
 
-        {{-- @include('layouts.slider') --}}
+                    @include('partials.guest.left-panel')
 
-        <main class="container my-2">
-            @yield('content')
+                </div>
+                <div class="col-sm">
+
+                    @yield('content')
+
+                </div>
+            </div>
         </main>
 
-        @include('layouts.partials.footer')
 
+        @include('partials.guest.footer')
     </div>
+
+    @stack('scripts')
 </body>
 
 </html>

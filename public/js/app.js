@@ -1908,6 +1908,8 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var ckeditor4_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ckeditor4-vue */ "./node_modules/ckeditor4-vue/dist/ckeditor.js");
+/* harmony import */ var ckeditor4_vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ckeditor4_vue__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -1925,6 +1927,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     id: String,
@@ -1935,6 +1938,9 @@ __webpack_require__.r(__webpack_exports__);
     name: String,
     classes: String,
     oldValue: String
+  },
+  components: {
+    ckeditor: ckeditor4_vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
   },
   data: function data() {
     var route_prefix = '/admin/filemanager';
@@ -32404,23 +32410,19 @@ module.exports = g;
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var ckeditor4_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ckeditor4-vue */ "./node_modules/ckeditor4-vue/dist/ckeditor.js");
-/* harmony import */ var ckeditor4_vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ckeditor4_vue__WEBPACK_IMPORTED_MODULE_0__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // import CKEditor from 'ckeditor4-vue';
 
 
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-Vue.use(ckeditor4_vue__WEBPACK_IMPORTED_MODULE_0___default.a);
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); // Vue.use(CKEditor);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import CKEditor from 'ckeditor4-vue';
+
 export default {
 	props: {
 		id: String,
@@ -26,6 +28,10 @@ export default {
 		name: String,
 		classes: String,
 		oldValue: String,
+	},
+
+	components: {
+		ckeditor: CKEditor.component,
 	},
 
 	data() {
