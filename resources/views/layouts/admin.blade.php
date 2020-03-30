@@ -22,6 +22,8 @@
 <body class="bg-white h-100">
     <div id="app" class="h-100">
 
+        @include('flash::message')
+
         <div class="row no-gutters h-100">
             <div class="col-lg-2 col-md-3 d-none d-md-block">
 

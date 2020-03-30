@@ -22,6 +22,8 @@
 <body class="bg-light">
     <div id="app">
 
+        @include('flash::message')
+
         @include('partials.guest.header')
 
         <main class="container my-3">

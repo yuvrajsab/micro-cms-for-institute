@@ -44,6 +44,8 @@ class PostController extends Controller
             'author_id' => Auth::id(),
         ]);
 
+        flash('Post has been created successfully!')->success();
+
         return redirect()->route('admin.posts.index');
     }
 
@@ -65,8 +67,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
+        return view('admin.posts.edit')
+            ->withCategories(Category::all())
+            ->withPost($post);
     }
 
     /**
@@ -85,6 +90,8 @@ class PostController extends Controller
             'body' => $request->body,
         ]);
 
+        flash('Post has been updated successfully!')->success();
+
         return redirect()->route('admin.posts.index');
     }
 
@@ -97,6 +104,8 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
+
+        flash('Post has been deleted successfully!')->success();
 
         return redirect()->route('admin.posts.index');
     }
