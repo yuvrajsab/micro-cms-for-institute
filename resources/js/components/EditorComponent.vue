@@ -43,7 +43,10 @@ export default {
 		return {
 			editorData: this.oldValue,
 			editorConfig: {
-				// The configuration of the editor.
+				enterMode: 1,
+				shiftEnterMode: 3,
+				fillEmptyBlocks: false,
+				disallowedContent: 'script; *[on*]',
 				filebrowserImageBrowseUrl: route_prefix + '?type=Images',
 				filebrowserImageUploadUrl:
 					route_prefix + '/upload?type=Images&_token=' + csrf_token,

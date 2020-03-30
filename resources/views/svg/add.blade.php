@@ -1,6 +1,5 @@
-<svg class="bi bi-plus {{ $classes ?? '' }}" width="{{ $size ?? '1.6em' }}" height="{{ $size ?? '1.6em' }}"
-    viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-    <path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H4a.5.5 0 010-1h3.5V4a.5.5 0 01.5-.5z"
-        clip-rule="evenodd" />
-    <path fill-rule="evenodd" d="M7.5 8a.5.5 0 01.5-.5h4a.5.5 0 010 1H8.5V12a.5.5 0 01-1 0V8z" clip-rule="evenodd" />
+<svg class="{{ $classes ?? '' }}" width="{{ $size ?? '1em'}}" height="{{ $size ?? '1em'}}" fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+    <path
+        d="M11 9h4v2h-4v4H9v-4H5V9h4V5h2v4zm-1 11a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16z" />
 </svg>

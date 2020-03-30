@@ -1,4 +1,4 @@
 <svg class="{{ $classes ?? '' }}" width="{{ $size ?? '1em' }}" height="{{ $size ?? '1em' }}" fill="currentColor"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-    <path d="M6 2l2-2h4l2 2h4v2H2V2h4zM3 6h14l-1 14H4L3 6zm5 2v10h1V8H8zm3 0v10h1V8h-1z" />
+    <path d="M0 2C0 .9.9 0 2 0h14l4 4v14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5 0v6h10V2H5zm6 1h3v4h-3V3z" />
 </svg>
