@@ -76,8 +76,16 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
+        $post->update([
+            'title' => $request->title,
+            'slug' => $this->generateUniqueSlug($request->title),
+            'category_id' => $request->category_id,
+            'body' => $request->body,
+        ]);
+
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -86,8 +94,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
+        $post->delete();
+
+        return redirect()->route('admin.posts.index');
     }
 
     public function publish(Post $post)

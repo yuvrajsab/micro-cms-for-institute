@@ -26,8 +26,8 @@ class DeletePostTest extends TestCase
 
         $this->signIn();
 
-        $this->delete(route('admin.posts.delete', $this->post))
-            ->assertRedirect(route('posts'));
+        $this->delete(route('admin.posts.destroy', $this->post))
+            ->assertRedirect(route('admin.posts.index'));
 
         $this->assertDatabaseMissing('posts', $this->post->toArray());
     }
@@ -35,7 +35,7 @@ class DeletePostTest extends TestCase
     /** @test */
     public function guests_cannot_delete_post()
     {
-        $this->delete(route('admin.posts.delete', $this->post))
+        $this->delete(route('admin.posts.destroy', $this->post))
             ->assertRedirect(route('login'));
     }
 }

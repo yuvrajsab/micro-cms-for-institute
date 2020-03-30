@@ -15,10 +15,21 @@ class ShowPostTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
+        $this->signIn();
+
         $post = factory(Post::class)->create(['published_at' => null]);
 
         $this->get(route('admin.posts.show', $post))
             ->assertSee($post->title)
             ->assertSee($post->body);
+    }
+
+    /** @test */
+    public function unauthorized_user_cannot_see_unpublished_posts()
+    {
+        $post = factory(Post::class)->create(['published_at' => null]);
+
+        $this->get(route('admin.posts.show', $post))
+            ->assertRedirect(route('login'));
     }
 }

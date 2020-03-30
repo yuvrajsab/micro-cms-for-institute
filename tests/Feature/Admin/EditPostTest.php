@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Post;
+use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -15,13 +16,17 @@ class EditPostTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $this->signIn();
+        $user = factory(User::class)->create();
+        $this->signIn($user);
 
-        $post = factory(Post::class)->create();
+        $post = factory(Post::class)->create([
+            'author_id' => $user->id,
+        ]);
+
         $post->title = 'changed title';
 
         $this->patch(route('admin.posts.update', $post), $post->toArray())
-            ->assertRedirect(route('posts'));
+            ->assertRedirect(route('admin.posts.index'));
 
         $this->assertDatabaseHas('posts', $post->fresh()->toArray());
     }
