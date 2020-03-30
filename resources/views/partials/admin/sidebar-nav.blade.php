@@ -1,5 +1,5 @@
 <div class="navbar navbar-dark bg-primary-dark">
-    <span class="navbar-brand m-0 h1">Navbar</span>
+    <span class="navbar-brand m-0 h1">{{ config('app.name', 'Laravel') . ' Admin' }}</span>
 </div>
 <nav class="navbar navbar-light bg-light sidebar-nav border-right align-content-start">
     <div class="show" id="navbarSupportedContent">

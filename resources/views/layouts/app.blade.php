@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col-md-4 col-lg-3">
 
-                    @include('partials.guest.left-panel')
+                    @include('partials.guest.side-panel')
 
                 </div>
                 <div class="col-sm">
