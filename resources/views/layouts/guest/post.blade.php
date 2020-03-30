@@ -1,9 +1,9 @@
-@extends('layouts.guest.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="card">
-    <div class="card-body">
-        @yield('content')
+    <div class="card-body overflow-auto">
+        @yield('postContent')
     </div>
 </div>
 @endsection

@@ -15,7 +15,7 @@
 
 <div class="mt-4">
     @button(['type' => 'submit'])
-    Submit
+    Save
     @endbutton
 
     @linkButton(['to' => route('admin.categories.index')])

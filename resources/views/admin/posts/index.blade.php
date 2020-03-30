@@ -62,13 +62,14 @@
                         </button>
                     </form>
                     @endif
-                    <a href="{{ route('admin.posts.edit', $post) }}" class="btn btn-sm btn-default" role="button">
+                    <a title="Edit" href="{{ route('admin.posts.edit', $post) }}" class="btn btn-sm btn-default mx-1"
+                        role="button">
                         @include('svg.edit', ['classes' => 'text-warning'])
                     </a>
                     <form action="{{ route('admin.posts.destroy', $post) }}" method="post">
                         @csrf @method('DELETE')
 
-                        <button class="btn btn-sm btn-default">
+                        <button title="Delete" class="btn btn-sm btn-default">
                             @include('svg.delete', ['classes' => 'text-danger'])
                         </button>
                     </form>
