@@ -20,6 +20,7 @@ class CreateCategoriesTable extends Migration
             $table->text('description')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('created_by')->references('id')->on('users')->onUpdate('cascade');
         });

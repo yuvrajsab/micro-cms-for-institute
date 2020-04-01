@@ -28,7 +28,12 @@
         <tr>
             <th scope="row">{{ $category->id }}</th>
             <td>
-                <strong><a href="#">{{ $category->name }}</a></strong>
+                <strong>
+                    <a href="#">{{ $category->name }}</a>
+                    @if (!! $category->deleted_at)
+                    <span class="text-muted">--Deleted</span>
+                    @endif
+                </strong>
                 <p v-show="false" class="text-justify">{{ $category->description }}</p>
             </td>
             <td>{{ $category->creator->name }}</td>
@@ -39,6 +44,15 @@
             </td>
             <td>
                 <div class="d-flex justify-content-end">
+                    @if (!! $category->deleted_at)
+                    <form action="{{ route('admin.categories.restore', $category) }}" method="post">
+                        @csrf
+
+                        <button class="btn btn-sm btn-default">
+                            @include('svg.restore', ['classes' => 'text-success'])
+                        </button>
+                    </form>
+                    @else
                     <a href="{{ route('admin.categories.edit', $category) }}" class="btn btn-sm btn-default"
                         role="button">
                         @include('svg.edit', ['classes' => 'text-warning'])
@@ -50,6 +64,7 @@
                             @include('svg.delete', ['classes' => 'text-danger'])
                         </button>
                     </form>
+                    @endif
                 </div>
             </td>
         </tr>

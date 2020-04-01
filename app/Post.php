@@ -8,6 +8,8 @@ class Post extends Model
 {
     protected $fillable = ['title', 'body', 'slug', 'author_id', 'category_id', 'published_at'];
 
+    protected $with = ['category'];
+
     protected $dates = ['published_at'];
 
     public function getRouteKeyName()
@@ -22,7 +24,7 @@ class Post extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class)->withTrashed();
     }
 
     public function publish()

@@ -19,4 +19,5 @@ Route::as('admin.')->group(function () {
     Route::post('/posts/{post}/publish', 'PostController@publish')->name('posts.publish');
 
     Route::resource('categories', 'CategoryController');
+    Route::post('/categories/{id}/restore', 'CategoryController@restore')->name('categories.restore');
 });
