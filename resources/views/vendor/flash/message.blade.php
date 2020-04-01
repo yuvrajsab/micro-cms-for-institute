@@ -16,7 +16,7 @@
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         @endif
 
-        {!! $message['message'] !!}
+        <strong>{!! $message['message'] !!}</strong>
     </div>
     @endif
 

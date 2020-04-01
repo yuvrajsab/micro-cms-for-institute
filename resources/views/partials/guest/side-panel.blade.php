@@ -4,12 +4,13 @@
         <p class="card-text">
             @foreach (App\Post::whereNotNull('published_at')->orderBy('published_at', 'desc')->take($size ?? 10)->get()
             as $post)
-            <p class="font-weight-semibold mb-2">
+            <p class="font-weight-semibold mb-0">
                 <a href="{{ route('posts.show', $post) }}">{{ $post->title }}</a>
 
                 @if ($post->published_at->diffInDays(now()) < 3) <span class="badge badge-warning">New</span>
                     @endif
             </p>
+            <hr class="my-2">
             @endforeach
             <p class="text-right mb-0"><small><a href="{{ route('posts.index') }}">View All</a></small></p>
         </p>
