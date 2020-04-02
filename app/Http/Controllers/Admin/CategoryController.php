@@ -27,7 +27,7 @@ class CategoryController extends Controller
             'name' => $request->name,
             'slug' => Str::slug($request->name),
             'description' => $request->description,
-            'created_by' => Auth::id(),
+            'creator_id' => Auth::id(),
         ]);
 
         flash('Category has been created successfully!')->success();

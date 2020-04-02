@@ -18,11 +18,11 @@ class CreateCategoriesTable extends Migration
             $table->string('name', 50)->unique();
             $table->string('slug', 50)->unique();
             $table->text('description')->nullable();
-            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('creator_id');
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('created_by')->references('id')->on('users')->onUpdate('cascade');
+            $table->foreign('creator_id')->references('id')->on('users')->onUpdate('cascade');
         });
     }
 

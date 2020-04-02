@@ -7,14 +7,12 @@ use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
 $factory->define(Category::class, function (Faker $faker) {
-    $name = implode(' ', $faker->words());
+    $name = $faker->words(3, true);
 
     return [
         'name' => $name,
         'slug' => Str::slug($name),
         'description' => $faker->paragraph(),
-        'created_by' => function () {
-            return factory(User::class)->create()->id;
-        },
+        'creator_id' => factory(User::class),
     ];
 });

@@ -9,11 +9,11 @@ class Category extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['name', 'slug', 'description', 'created_by'];
+    protected $fillable = ['name', 'slug', 'description', 'creator_id'];
 
     public function creator()
     {
-        return $this->belongsTo(User::class, 'created_by');
+        return $this->belongsTo(User::class, 'creator_id');
     }
 
     public function posts()

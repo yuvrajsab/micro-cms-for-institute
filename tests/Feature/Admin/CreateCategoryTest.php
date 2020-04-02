@@ -21,7 +21,7 @@ class CreateCategoryTest extends TestCase
         $this->signIn($user);
 
         $category = factory(Category::class)->make([
-            'created_by' => $user,
+            'creator_id' => $user,
         ]);
 
         $this->post(route('admin.categories.store'), $category->toArray())

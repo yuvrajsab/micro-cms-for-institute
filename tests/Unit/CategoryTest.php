@@ -18,7 +18,7 @@ class CategoryTest extends TestCase
 
         $user = factory(User::class)->create();
         $category = factory(Category::class)->create([
-            'created_by' => $user->id,
+            'creator_id' => $user->id,
         ]);
 
         $this->assertInstanceOf(User::class, $category->creator);
