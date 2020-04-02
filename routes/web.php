@@ -22,3 +22,6 @@ Route::get('/', 'WelcomeController@index')->name('home');
 /** Posts */
 Route::get('/posts', 'PostController@index')->name('posts.index');
 Route::get('/posts/{post}', 'PostController@show')->name('posts.show');
+
+/** Pages */
+Route::get('/pages/{page}', 'PageController@show')->name('pages.show');

@@ -20,4 +20,6 @@ Route::as('admin.')->group(function () {
 
     Route::resource('categories', 'CategoryController');
     Route::post('/categories/{id}/restore', 'CategoryController@restore')->name('categories.restore');
+
+    Route::resource('pages', 'PageController')->except('show');
 });
