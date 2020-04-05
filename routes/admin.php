@@ -3,6 +3,8 @@
 /**
  * Admin routes
  */
+use App\MenuGroup;
+use App\MenuItem;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -22,4 +24,8 @@ Route::as('admin.')->group(function () {
     Route::post('/categories/{id}/restore', 'CategoryController@restore')->name('categories.restore');
 
     Route::resource('pages', 'PageController')->except('show');
+
+    Route::resource('menu-groups', 'MenuGroupController');
+    Route::resource('menu-items', 'MenuItemController');
+
 });
