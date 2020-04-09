@@ -12,4 +12,9 @@ class MenuItem extends Model
     {
         return $this->belongsTo(MenuGroup::class);
     }
+
+    public function getNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
 }

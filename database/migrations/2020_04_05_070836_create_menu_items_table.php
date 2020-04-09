@@ -24,7 +24,7 @@ class CreateMenuItemsTable extends Migration
             $table->unique(['name', 'url']);
 
             $table->foreign('group_id')->references('id')->on('menu_groups')
-                ->onDelete('cascade')
+                ->onDelete(null)
                 ->onUpdate('cascade');
         });
     }

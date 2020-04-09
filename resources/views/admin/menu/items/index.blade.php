@@ -48,10 +48,11 @@
             </td>
             <td>
                 <div class="d-flex justify-content-end">
-                    <a title="Edit" href="" class="btn btn-sm btn-default mx-1" role="button">
+                    <a title="Edit" href="{{ route('admin.menu-items.edit', $item) }}"
+                        class="btn btn-sm btn-default mx-1" role="button">
                         @include('svg.edit', ['classes' => 'text-warning'])
                     </a>
-                    <form action="" method="post">
+                    <form action="{{ route('admin.menu-items.destroy', $item) }}" method="post">
                         @csrf @method('DELETE')
 
                         <button title="Delete" class="btn btn-sm btn-default">
