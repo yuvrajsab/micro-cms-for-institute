@@ -19,7 +19,7 @@
             <th scope="col">Id</th>
             <th scope="col">Name</th>
             <th scope="col">Url</th>
-            <th scope="col">Location</th>
+            <th scope="col">Type</th>
             <th scope="col">Group</th>
             <th scope="col">Date</th>
             <th scope="col" class="text-right">Actions</th>
@@ -39,7 +39,9 @@
                     @include('svg.link') <a href="{{ $item->url }}">{{ $item->url }}</a>
                 </p>
             </td>
-            <td>{{ ! $item->group ? $item->location : '-' }}</td>
+            <td>
+                <small class="text-uppercase">{{ ! $item->group ? $item->type : '-' }}</small>
+            </td>
             <td>{{ $item->group->name ?? '-' }}</td>
             <td>
                 <abbr title="{{ $item->created_at->toDateTimeString() }}" class="initialism">

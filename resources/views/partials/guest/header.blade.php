@@ -1,4 +1,4 @@
-@include('partials.guest.top-nav')
+@include('partials.guest.secondary-nav')
 
 <div class="bg-white py-3">
     <div class="container">
@@ -18,4 +18,4 @@
     </div>
 </div>
 
-@include('partials.guest.main-nav')
+@include('partials.guest.primary-nav')

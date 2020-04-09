@@ -8,7 +8,7 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a class="nav-link {{ Request::routeIs('home') ? 'active' : '' }}"
                         href="{{ route('home') }}">Home</a></li>
-                @foreach (App\Navigation::getMainNav() as $navItem)
+                @foreach (App\Navigation::getPrimaryMenu() as $navItem)
                 @if (!!$navItem->items)
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"

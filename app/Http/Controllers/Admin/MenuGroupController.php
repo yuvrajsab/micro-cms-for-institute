@@ -23,7 +23,7 @@ class MenuGroupController extends Controller
     {
         MenuGroup::create([
             'name' => $request->name,
-            'location' => $request->location,
+            'type' => $request->type,
         ]);
 
         flash('Menu group has been successfully created!')->success();
@@ -41,7 +41,7 @@ class MenuGroupController extends Controller
     {
         $menuGroup->update([
             'name' => $request->name,
-            'location' => $request->location,
+            'type' => $request->type,
         ]);
 
         flash('Menu group has been successfuly updated!')->success();

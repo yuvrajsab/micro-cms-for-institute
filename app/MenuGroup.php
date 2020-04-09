@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class MenuGroup extends Model
 {
-    protected $fillable = ['name', 'location'];
+    protected $fillable = ['name', 'type'];
 
     public function items()
     {

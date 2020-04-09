@@ -6,7 +6,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mr-auto">
-                @foreach (App\Navigation::getTopNav() as $navItem)
+                @foreach (App\Navigation::getSecondaryMenu() as $navItem)
                 @if (!!$navItem->items)
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"

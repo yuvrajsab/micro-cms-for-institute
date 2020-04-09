@@ -11,18 +11,18 @@
 @endinputGroup
 
 <div class="form-group">
-    <label for="formGroupExampleInput">Location</label>
+    <label for="formGroupExampleInput">Type</label>
     <div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="location" id="location_main" value="main" checked>
-            <label class="form-check-label" for="location_main">
-                Main
+            <input class="form-check-input" type="radio" name="type" id="type_primary" value="primary" checked>
+            <label class="form-check-label" for="type_primary">
+                Primary
             </label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="location" id="location_top" value="top">
-            <label class="form-check-label" for="location_top">
-                Top
+            <input class="form-check-input" type="radio" name="type" id="type_secondary" value="secondary">
+            <label class="form-check-label" for="type_secondary">
+                Secondary
             </label>
         </div>
     </div>

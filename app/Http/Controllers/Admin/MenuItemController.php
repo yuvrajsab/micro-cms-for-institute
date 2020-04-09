@@ -26,7 +26,7 @@ class MenuItemController extends Controller
         MenuItem::create([
             'name' => $request->name,
             'url' => $request->url,
-            'location' => $request->location,
+            'type' => $request->type,
             'group_id' => $request->group_id,
         ]);
 
@@ -47,7 +47,7 @@ class MenuItemController extends Controller
         $menuItem->update([
             'name' => $request->name,
             'url' => $request->url,
-            'location' => $request->location,
+            'type' => $request->type,
             'group_id' => $request->group_id,
         ]);
 
