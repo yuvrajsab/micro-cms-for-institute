@@ -10,29 +10,9 @@
                     <p class="lead mb-0">Tagline</p>
                 </div>
             </div>
-            <div class="col-sm">
-                <nav class="navbar navbar-expand navbar-light p-0">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-                        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarText">
-                        <ul class="navbar-nav py-2 mx-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Features</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Pricing</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="btn btn-primary ml-3" href="#">Pricing</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+            <div class="col-sm text-right">
+                <a href="{{ route('posts.index') }}" class="btn btn-primary px-4" href="#" role="button"
+                    style="cursor: pointer">Posts</a>
             </div>
         </div>
     </div>
