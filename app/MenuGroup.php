@@ -12,4 +12,9 @@ class MenuGroup extends Model
     {
         return $this->hasMany(MenuItem::class, 'group_id');
     }
+
+    public function getNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
 }

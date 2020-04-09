@@ -30,4 +30,31 @@ class MenuGroupController extends Controller
 
         return redirect()->route('admin.menu-groups.index');
     }
+
+    public function edit(MenuGroup $menuGroup)
+    {
+        return view('admin.menu.groups.edit')
+            ->withGroup($menuGroup);
+    }
+
+    public function update(MenuGroup $menuGroup, Request $request)
+    {
+        $menuGroup->update([
+            'name' => $request->name,
+            'location' => $request->location,
+        ]);
+
+        flash('Menu group has been successfuly updated!')->success();
+
+        return redirect()->route('admin.menu-groups.index');
+    }
+
+    public function destroy(MenuGroup $menuGroup)
+    {
+        $menuGroup->delete();
+
+        flash('Menu group has been successfully deleted!')->success();
+
+        return redirect()->route('admin.menu-groups.index');
+    }
 }

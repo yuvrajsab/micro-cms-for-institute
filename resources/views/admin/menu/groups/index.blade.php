@@ -40,10 +40,11 @@
             </td>
             <td>
                 <div class="d-flex justify-content-end">
-                    <a title="Edit" href="" class="btn btn-sm btn-default mx-1" role="button">
+                    <a title="Edit" href="{{ route('admin.menu-groups.edit', $group) }}"
+                        class="btn btn-sm btn-default mx-1" role="button">
                         @include('svg.edit', ['classes' => 'text-warning'])
                     </a>
-                    <form action="" method="post">
+                    <form action="{{ route('admin.menu-groups.destroy', $group) }}" method="post">
                         @csrf @method('DELETE')
 
                         <button title="Delete" class="btn btn-sm btn-default">

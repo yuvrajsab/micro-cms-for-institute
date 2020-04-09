@@ -3,8 +3,6 @@
 /**
  * Admin routes
  */
-use App\MenuGroup;
-use App\MenuItem;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -27,5 +25,4 @@ Route::as('admin.')->group(function () {
 
     Route::resource('menu-groups', 'MenuGroupController');
     Route::resource('menu-items', 'MenuItemController');
-
 });
