@@ -29,6 +29,11 @@
             <span class="navbar-text text-dark d-block">
                 <i>Call us today:</i> <strong>800-123-456</strong>
             </span>
+            @auth
+            <li class="bg-secondary ml-2 list-unstyled">
+                <a class="nav-link text-white" href="{{ route('admin.dashboard') }}">Admin Panel</a>
+            </li>
+            @endauth
         </div>
     </div>
 </nav>

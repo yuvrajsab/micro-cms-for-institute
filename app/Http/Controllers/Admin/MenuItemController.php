@@ -23,16 +23,11 @@ class MenuItemController extends Controller
 
     public function store(Request $request)
     {
-        MenuItem::create([
-            'name' => $request->name,
-            'url' => $request->url,
-            'type' => $request->type,
-            'group_id' => $request->group_id,
-        ]);
+        MenuItem::create($this->getValidatedAttributes($request));
 
         flash('Menu item has been successfully created!')->success();
 
-        return redirect()->route('admin.menu-items.index');
+        return $this->redirectToIndex();
     }
 
     public function edit(MenuItem $menuItem)
@@ -44,16 +39,11 @@ class MenuItemController extends Controller
 
     public function update(MenuItem $menuItem, Request $request)
     {
-        $menuItem->update([
-            'name' => $request->name,
-            'url' => $request->url,
-            'type' => $request->type,
-            'group_id' => $request->group_id,
-        ]);
+        $menuItem->update($this->getValidatedAttributes($request));
 
         flash('Menu item has been successfully updated')->success();
 
-        return redirect()->route('admin.menu-items.index');
+        return $this->redirectToIndex();
     }
 
     public function destroy(MenuItem $menuItem)
@@ -62,6 +52,21 @@ class MenuItemController extends Controller
 
         flash('Menu item has been successfully deleted!')->success();
 
+        return $this->redirectToIndex();
+    }
+
+    protected function redirectToIndex()
+    {
         return redirect()->route('admin.menu-items.index');
+    }
+
+    protected function getValidatedAttributes(Request $request): array
+    {
+        return $request->validate([
+            'name' => 'required',
+            'url' => 'required',
+            'type' => 'required|in:primary,secondary',
+            'group_id' => 'nullable|exists:menu_groups,id',
+        ]);
     }
 }

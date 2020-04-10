@@ -21,14 +21,11 @@ class MenuGroupController extends Controller
 
     public function store(Request $request)
     {
-        MenuGroup::create([
-            'name' => $request->name,
-            'type' => $request->type,
-        ]);
+        MenuGroup::create($this->getValidatedAttributes($request));
 
         flash('Menu group has been successfully created!')->success();
 
-        return redirect()->route('admin.menu-groups.index');
+        return $this->redirectToIndex();
     }
 
     public function edit(MenuGroup $menuGroup)
@@ -39,14 +36,11 @@ class MenuGroupController extends Controller
 
     public function update(MenuGroup $menuGroup, Request $request)
     {
-        $menuGroup->update([
-            'name' => $request->name,
-            'type' => $request->type,
-        ]);
+        $menuGroup->update($this->getValidatedAttributes($request));
 
         flash('Menu group has been successfuly updated!')->success();
 
-        return redirect()->route('admin.menu-groups.index');
+        return $this->redirectToIndex();
     }
 
     public function destroy(MenuGroup $menuGroup)
@@ -55,6 +49,19 @@ class MenuGroupController extends Controller
 
         flash('Menu group has been successfully deleted!')->success();
 
+        return $this->redirectToIndex();
+    }
+
+    protected function redirectToIndex()
+    {
         return redirect()->route('admin.menu-groups.index');
+    }
+
+    protected function getValidatedAttributes(Request $request): array
+    {
+        return $request->validate([
+            'name' => 'required',
+            'type' => 'required',
+        ]);
     }
 }

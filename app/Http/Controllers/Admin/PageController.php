@@ -23,14 +23,15 @@ class PageController extends Controller
 
     public function store(Request $request)
     {
-        Page::create([
-            'name' => $request->name,
-            'slug' => Str::slug($request->name),
-            'content' => $request->content,
-            'creator_id' => Auth::id(),
-        ]);
+        Page::create(array_merge(
+            $this->getValidatedAttributes($request),
+            [
+                'slug' => Str::slug($request->name),
+                'creator_id' => Auth::id(),
+            ]
+        ));
 
-        return redirect()->route('admin.pages.index');
+        return $this->redirectToIndex();
     }
 
     public function edit(Page $page)
@@ -41,15 +42,14 @@ class PageController extends Controller
 
     public function update(Request $request, Page $page)
     {
-        $page->update([
-            'name' => $request->name,
-            'slug' => Str::slug($request->name),
-            'content' => $request->content,
-        ]);
+        $page->update(array_merge(
+            $this->getValidatedAttributes($request),
+            ['slug' => Str::slug($request->name)]
+        ));
 
         flash('Page has been updated successfully!')->success();
 
-        return redirect()->route('admin.pages.index');
+        return $this->redirectToIndex();
     }
 
     public function destroy(Page $page)
@@ -58,6 +58,19 @@ class PageController extends Controller
 
         flash('Page has been deleted successfully!')->success();
 
+        return $this->redirectToIndex();
+    }
+
+    protected function redirectToIndex()
+    {
         return redirect()->route('admin.pages.index');
+    }
+
+    protected function getValidatedAttributes(Request $request): array
+    {
+        return $request->validate([
+            'name' => 'required',
+            'content' => 'required',
+        ]);
     }
 }

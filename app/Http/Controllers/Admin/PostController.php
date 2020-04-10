@@ -31,22 +31,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required|min:3',
-            'body' => 'required',
-        ]);
-
-        Post::create([
-            'title' => $request->title,
-            'slug' => $this->generateUniqueSlug($request->title),
-            'category_id' => $request->category_id,
-            'body' => $request->body,
-            'author_id' => Auth::id(),
-        ]);
+        Post::create(array_merge(
+            $this->getValidatedAttributes($request),
+            [
+                'slug' => $this->generateUniqueSlug($request->title),
+                'author_id' => Auth::id(),
+            ]
+        ));
 
         flash('Post has been created successfully!')->success();
 
-        return redirect()->route('admin.posts.index');
+        return $this->redirectToIndex();
     }
 
     /**
@@ -83,16 +78,14 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $post->update([
-            'title' => $request->title,
-            'slug' => $this->generateUniqueSlug($request->title),
-            'category_id' => $request->category_id,
-            'body' => $request->body,
-        ]);
+        $post->update(array_merge(
+            $this->getValidatedAttributes($request),
+            ['slug' => $this->generateUniqueSlug($request->title)]
+        ));
 
         flash('Post has been updated successfully!')->success();
 
-        return redirect()->route('admin.posts.index');
+        return $this->redirectToIndex();
     }
 
     /**
@@ -107,14 +100,14 @@ class PostController extends Controller
 
         flash('Post has been deleted successfully!')->success();
 
-        return redirect()->route('admin.posts.index');
+        return $this->redirectToIndex();
     }
 
     public function publish(Post $post)
     {
         $post->publish();
 
-        return redirect()->route('admin.posts.index');
+        return $this->redirectToIndex();
     }
 
     /**
@@ -127,5 +120,19 @@ class PostController extends Controller
     protected function generateUniqueSlug(String $text): String
     {
         return now()->toDateString().'-'.Str::slug($text);
+    }
+
+    protected function getValidatedAttributes(Request $request): array
+    {
+        return $request->validate([
+            'title' => 'required|min:3',
+            'category_id' => 'required|exists:categories,id',
+            'body' => 'required',
+        ]);
+    }
+
+    protected function redirectToIndex()
+    {
+        return redirect()->route('admin.posts.index');
     }
 }

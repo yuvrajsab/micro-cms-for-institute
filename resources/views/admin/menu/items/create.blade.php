@@ -34,7 +34,7 @@
 @selectGroup(['title' => 'Group', 'name' => 'group_id'])
 <option value="">-</option>
 @foreach ($menuGroups as $group)
-<option value="{{ $group->id }}">{{ $group->name }}</option>
+<option value="{{ $group->id }}" {{ (old('group_id') == $group->id) ? 'selected' : '' }}>{{ $group->name }}</option>
 @endforeach
 @endselectGroup
 

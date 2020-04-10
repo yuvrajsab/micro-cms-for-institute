@@ -26,13 +26,10 @@
                     <a class="dropdown-item" href="{{ route('admin.menu-items.index') }}">Items</a>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
         </ul>
-        <form class="my-2">
+        {{-- <form class="my-2">
             <input class="form-control" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2" type="submit">Search</button>
-        </form>
+        </form> --}}
     </div>
 </nav>

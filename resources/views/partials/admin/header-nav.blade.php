@@ -5,8 +5,20 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Add New
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{{ route('admin.posts.create') }}">Post</a>
+                    <a class="dropdown-item" href="{{ route('admin.categories.create') }}">Category</a>
+                    <a class="dropdown-item" href="{{ route('admin.pages.create') }}">Page</a>
+                    <a class="dropdown-item" href="{{ route('admin.menu-groups.create') }}">Menu Group</a>
+                    <a class="dropdown-item" href="{{ route('admin.menu-items.create') }}">Menu Item</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Site</a></li>
         </ul>
         <div class="dropdown">
             <button class="btn btn-primary-dark dropdown-toggle" type="button" id="dropdownMenuButton"

@@ -23,16 +23,17 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-        Category::create([
-            'name' => $request->name,
-            'slug' => Str::slug($request->name),
-            'description' => $request->description,
-            'creator_id' => Auth::id(),
-        ]);
+        Category::create(array_merge(
+            $this->getValidatedAtrributes($request),
+            [
+                'slug' => Str::slug($request->name),
+                'creator_id' => Auth::id(),
+            ]
+        ));
 
         flash('Category has been created successfully!')->success();
 
-        return redirect()->route('admin.categories.index');
+        return $this->redirectToIndex();
     }
 
     public function edit(Category $category)
@@ -43,22 +44,23 @@ class CategoryController extends Controller
 
     public function update(Request $request, Category $category)
     {
-        $category->update([
-            'name' => $request->name,
-            'slug' => Str::slug($request->name),
-            'description' => $request->description,
-        ]);
+        $category->update(array_merge(
+            $this->getValidatedAtrributes($request),
+            [
+                'slug' => Str::slug($request->name),
+            ]
+        ));
 
         flash('Category has been updated successfully!')->success();
 
-        return redirect()->route('admin.categories.index');
+        return $this->redirectToIndex();
     }
 
     public function destroy(Category $category)
     {
         $this->delete($category);
 
-        return redirect()->route('admin.categories.index');
+        return $this->redirectToIndex();
     }
 
     public function restore(int $id)
@@ -68,12 +70,12 @@ class CategoryController extends Controller
 
         flash('Category has been restored successfully!')->success();
 
-        return redirect()->route('admin.categories.index');
+        return $this->redirectToIndex();
     }
 
     protected function delete(Category $category)
     {
-        if (!$category->posts()->exists()) {
+        if (!$category->hasPosts()) {
             $category->forceDelete();
 
             flash('Category has been deleted successfully!')->success();
@@ -82,5 +84,18 @@ class CategoryController extends Controller
 
             flash('Category has been partially deleted!')->warning();
         }
+    }
+
+    protected function redirectToIndex()
+    {
+        return redirect()->route('admin.categories.index');
+    }
+
+    protected function getValidatedAtrributes(Request $request): array
+    {
+        return $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+        ]);
     }
 }

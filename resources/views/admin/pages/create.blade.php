@@ -25,7 +25,7 @@
     Save
     @endbutton
 
-    @linkButton(['to' => route('admin.posts.index')])
+    @linkButton(['to' => route('admin.pages.index')])
     Cancel
     @endlinkButton
 </div>
