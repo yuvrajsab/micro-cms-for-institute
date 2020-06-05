@@ -1,5 +1,5 @@
 <div class="navbar navbar-dark bg-primary-dark">
-    <span class="navbar-brand m-0 h1">{{ config('app.name', 'Laravel') . ' Admin' }}</span>
+    <span class="navbar-brand m-0 h1">{{ config('app.name') . ' Admin' }}</span>
 </div>
 <nav class="navbar navbar-light bg-light sidebar-nav border-right align-content-start">
     <div class="show" id="navbarSupportedContent">
@@ -27,9 +27,5 @@
                 </div>
             </li>
         </ul>
-        {{-- <form class="my-2">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2" type="submit">Search</button>
-        </form> --}}
     </div>
 </nav>

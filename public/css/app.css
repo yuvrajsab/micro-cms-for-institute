@@ -3522,7 +3522,7 @@ input[type=button].btn-block {
   z-index: 1000;
   display: none;
   float: left;
-  min-width: 10rem;
+  min-width: 12rem;
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
   font-size: 0.9rem;
@@ -3696,7 +3696,7 @@ input[type=button].btn-block {
 .dropdown-item {
   display: block;
   width: 100%;
-  padding: 0.25rem 1.5rem;
+  padding: 0.25rem 1.25rem;
   clear: both;
   font-weight: 400;
   color: #212529;
@@ -3733,7 +3733,7 @@ input[type=button].btn-block {
 
 .dropdown-header {
   display: block;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1.25rem;
   margin-bottom: 0;
   font-size: 0.7875rem;
   color: #6c757d;
@@ -3742,7 +3742,7 @@ input[type=button].btn-block {
 
 .dropdown-item-text {
   display: block;
-  padding: 0.25rem 1.5rem;
+  padding: 0.25rem 1.25rem;
   color: #212529;
 }
 
