@@ -16,7 +16,6 @@ class CreateMenuGroupsTable extends Migration
         Schema::create('menu_groups', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');//group name
-            $table->enum('type', ['primary', 'secondary'])->default('primary');
             $table->timestamps();
         });
     }

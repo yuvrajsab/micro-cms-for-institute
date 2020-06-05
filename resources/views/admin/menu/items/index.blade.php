@@ -19,7 +19,6 @@
             <th scope="col">Id</th>
             <th scope="col">Name</th>
             <th scope="col">Url</th>
-            <th scope="col">Type</th>
             <th scope="col">Group</th>
             <th scope="col">Date</th>
             <th scope="col" class="text-right">Actions</th>
@@ -38,9 +37,6 @@
                 <p class="text-muted mb-0">
                     @include('svg.link') <a href="{{ $item->url }}">{{ $item->url }}</a>
                 </p>
-            </td>
-            <td>
-                <small class="text-uppercase">{{ ! $item->group ? $item->type : '-' }}</small>
             </td>
             <td>{{ $item->group->name ?? '-' }}</td>
             <td>
@@ -67,6 +63,5 @@
         @endforeach
     </tbody>
 </table>
-
 
 @endsection

@@ -18,7 +18,6 @@
         <tr>
             <th scope="col">Id</th>
             <th scope="col">Name</th>
-            <th scope="col">Type</th>
             <th scope="col">Date</th>
             <th scope="col" class="text-right">Actions</th>
         </tr>
@@ -31,9 +30,6 @@
                 <strong>
                     <a href="#">{{ $group->name }}</a>
                 </strong>
-            </td>
-            <td>
-                <small class="text-uppercase">{{ $group->type }}</small>
             </td>
             <td>
                 <abbr title="{{ $group->created_at->toDateTimeString() }}" class="initialism">

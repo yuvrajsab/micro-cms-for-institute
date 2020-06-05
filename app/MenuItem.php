@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class MenuItem extends Model
 {
-    protected $fillable = ['name', 'url', 'type', 'group_id'];
+    protected $fillable = ['name', 'url', 'group_id'];
 
     protected static function boot()
     {

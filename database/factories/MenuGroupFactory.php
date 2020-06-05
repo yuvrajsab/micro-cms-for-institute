@@ -7,6 +7,5 @@ use Faker\Generator as Faker;
 $factory->define(MenuGroup::class, function (Faker $faker) {
     return [
         'name' => $faker->word(),
-        'type' => $faker->randomElement(['primary', 'secondary']),
     ];
 });

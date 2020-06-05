@@ -61,7 +61,6 @@ class MenuGroupController extends Controller
     {
         return $request->validate([
             'name' => 'required',
-            'type' => 'required',
         ]);
     }
 }

@@ -14,47 +14,36 @@ class NavigationTest extends TestCase
     /** @test */
     public function navigation_has_menu_items()
     {
-        factory(MenuItem::class, 2)->create([
-            'type' => 'primary',
+        factory(MenuItem::class, 5)->create([
             'group_id' => null,
         ]);
 
-        factory(MenuItem::class, 3)->create([
-            'type' => 'secondary',
-            'group_id' => null,
-        ]);
-
-        $this->assertCount(2, Navigation::getPrimaryMenu());
-        $this->assertCount(3, Navigation::getSecondaryMenu());
+        $this->assertCount(5, Navigation::get());
     }
 
     /** @test */
     public function navigation_get_cached_after_calling_get_function()
     {
-        factory(MenuItem::class)->create([
-            'type' => 'primary',
-        ]);
+        factory(MenuItem::class)->create();
 
-        Navigation::getPrimaryMenu();
+        Navigation::get();
 
-        $this->assertTrue(Navigation::isPrimaryMenuCached());
+        $this->assertTrue(Navigation::isCached());
     }
 
     /** @test */
     public function cached_navigation_gets_cleared_when_menu_item_create_or_update_or_delete()
     {
-        factory(MenuItem::class)->create([
-            'type' => 'secondary',
-        ]);
+        $menuItem = factory(MenuItem::class)->create();
 
-        Navigation::getSecondaryMenu();
+        $this->assertFalse(Navigation::isCached());
 
-        $this->assertTrue(Navigation::isSecondaryMenuCached());
+        $menuItem->update(['name' => 'changed']);
 
-        factory(MenuItem::class)->create([
-            'type' => 'secondary',
-        ]);
+        $this->assertFalse(Navigation::isCached());
 
-        $this->assertFalse(Navigation::isSecondaryMenuCached());
+        $menuItem->delete();
+
+        $this->assertFalse(Navigation::isCached());
     }
 }

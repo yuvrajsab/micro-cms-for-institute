@@ -17,7 +17,6 @@ class CreateMenuItemsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name'); //item name
             $table->string('url');
-            $table->enum('type', ['primary', 'secondary'])->default('primary');
             $table->unsignedBigInteger('group_id')->nullable()->default(null);
             $table->timestamps();
 

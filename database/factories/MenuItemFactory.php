@@ -9,7 +9,6 @@ $factory->define(MenuItem::class, function (Faker $faker) {
     return [
         'name' => $faker->word(),
         'url' => $faker->url,
-        'type' => $faker->randomElement(['primary', 'secondary']),
         'group_id' => $faker->randomElement([null, function () {
             return factory(MenuGroup::class)->create()->id;
         }]),

@@ -65,7 +65,6 @@ class MenuItemController extends Controller
         return $request->validate([
             'name' => 'required',
             'url' => 'required',
-            'type' => 'required|in:primary,secondary',
             'group_id' => 'nullable|exists:menu_groups,id',
         ]);
     }

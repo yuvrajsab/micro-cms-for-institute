@@ -7,43 +7,31 @@ use Illuminate\Support\Facades\Cache;
 
 class Navigation
 {
-    protected static function build(String $type): Collection
+    protected static function build(): Collection
     {
         return collect([
-            MenuGroup::has('items')->with('items')->where('type', $type)->get(),
-            MenuItem::whereNull('group_id')->where('type', $type)->get(),
+            MenuGroup::has('items')->with('items')->get(),
+            MenuItem::whereNull('group_id')->get(),
         ])->flatten()->sortBy('name');
     }
 
     protected static function cache()
     {
-        Cache::forever('primaryMenu', static::build('primary'));
-        Cache::forever('secondaryMenu', static::build('secondary'));
+        Cache::forever('menu', static::build());
     }
 
-    public static function isPrimaryMenuCached()
+    public static function isCached(): bool
     {
-        return Cache::has('primaryMenu');
-    }
-
-    public static function isSecondaryMenuCached()
-    {
-        return Cache::has('secondaryMenu');
+        return Cache::has('menu');
     }
 
     public static function clearCached()
     {
-        Cache::forget('primaryMenu');
-        Cache::forget('secondaryMenu');
+        Cache::forget('menu');
     }
 
-    public static function getPrimaryMenu(): Collection
+    public static function get(): Collection
     {
-        return Cache::get('primaryMenu', tap(static::build('primary'), static::cache()));
-    }
-
-    public static function getSecondaryMenu(): Collection
-    {
-        return Cache::get('secondaryMenu', tap(static::build('secondary'), static::cache()));
+        return Cache::get('menu', tap(static::build(), static::cache()));
     }
 }
