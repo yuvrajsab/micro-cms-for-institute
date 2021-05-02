@@ -2,6 +2,10 @@
 
 This CMS is for institutes who want to manage their web sites without having to deal with markup and stuff, its like wordpress but more focused on a single thing.
 
+## Screenshot
+
+![screenshot](https://github.com/yuvrajsab/micro-cms-for-institute/blob/master/demo_image.png)
+
 ## Prerequisites
 
 -   Php > 7.2
